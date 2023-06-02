@@ -1,0 +1,8 @@
+plugins {
+  id 'com.axelor.app'
+}
+
+axelor {
+  title = "{{MODULE_NAME}}"
+  description "My module"
+}

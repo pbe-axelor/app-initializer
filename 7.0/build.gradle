@@ -1,0 +1,74 @@
+plugins {
+  id 'com.axelor.app'
+}
+
+axelor {
+  title "{{PROJECT_NAME}}"
+  description "My description"
+}
+
+allprojects {
+  apply plugin: 'idea'
+  apply plugin: 'eclipse'
+
+  group = 'com.axelor.apps'
+  version = '0.0.1'
+
+  java {
+    toolchain {
+      languageVersion = JavaLanguageVersion.of(11)
+    }
+  }
+
+  afterEvaluate {
+    test {
+      useJUnitPlatform()
+      beforeTest { descriptor ->
+        logger.lifecycle('Running: ' + descriptor)
+      }
+    }
+  }
+
+  configurations {
+    runtimeClasspath.exclude group: "org.eclipse.birt.runtime.3_7_1", module: "org.apache.commons.codec"
+  }
+}
+
+dependencies {
+
+  // BEGIN AOS CORE
+  api "com.axelor.apps:axelor-account:{{AOS_VERSION}}"
+  api "com.axelor.apps:axelor-cash-management:{{AOS_VERSION}}"
+  api "com.axelor.apps:axelor-human-resource:{{AOS_VERSION}}"
+  api "com.axelor.apps:axelor-stock:{{AOS_VERSION}}"
+  api "com.axelor.apps:axelor-supplychain:{{AOS_VERSION}}"
+  api "com.axelor.apps:axelor-business-production:{{AOS_VERSION}}"
+  api "com.axelor.apps:axelor-client-portal:{{AOS_VERSION}}"
+  api "com.axelor.apps:axelor-fleet:{{AOS_VERSION}}"
+  api "com.axelor.apps:axelor-maintenance:{{AOS_VERSION}}"
+  api "com.axelor.apps:axelor-mobile-settings:{{AOS_VERSION}}"
+  api "com.axelor.apps:axelor-purchase:{{AOS_VERSION}}"
+  api "com.axelor.apps:axelor-talent:{{AOS_VERSION}}"
+  api "com.axelor.apps:axelor-bank-payment:{{AOS_VERSION}}"
+  api "com.axelor.apps:axelor-business-project:{{AOS_VERSION}}"
+  api "com.axelor.apps:axelor-contract:{{AOS_VERSION}}"
+  api "com.axelor.apps:axelor-gdpr:{{AOS_VERSION}}"
+  api "com.axelor.apps:axelor-marketing:{{AOS_VERSION}}"
+  api "com.axelor.apps:axelor-production:{{AOS_VERSION}}"
+  api "com.axelor.apps:axelor-quality:{{AOS_VERSION}}"
+  api "com.axelor.apps:axelor-supplier-management:{{AOS_VERSION}}"
+  api "com.axelor.apps:axelor-base:{{AOS_VERSION}}"
+  api "com.axelor.apps:axelor-business-support:{{AOS_VERSION}}"
+  api "com.axelor.apps:axelor-crm:{{AOS_VERSION}}"
+  api "com.axelor.apps:axelor-helpdesk:{{AOS_VERSION}}"
+  api "com.axelor.apps:axelor-project:{{AOS_VERSION}}"
+  api "com.axelor.apps:axelor-sale:{{AOS_VERSION}}"
+  api "com.axelor.apps:axelor-supplier-portal:{{AOS_VERSION}}"
+  // END AOS CORE
+
+  // BEGIN ADDONS
+  // END ADDONS
+
+  // BEGIN ENTERPRISE MODULES
+  // END ENTERPRISE MODULES
+}
