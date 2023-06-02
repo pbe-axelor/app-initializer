@@ -59,7 +59,7 @@ check() {
 
     # Check if project name is provided
     if [ -z "${PROJECT_NAME}" ]; then
-        echo -e "${RED}project name parameter is required, provide it with the flag --name OR the variable \$PROJECT_NAME${NC}"
+        echo -e "${RED}project name parameter is required, provide it with the flag --name OR the variable \$APP_INITIALIZER_PROJECT_NAME${NC}"
         exit 1
     fi
 
